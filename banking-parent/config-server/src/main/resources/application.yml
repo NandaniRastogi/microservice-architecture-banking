@@ -1,0 +1,26 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  security:
+    user:
+      name: configadmin
+      password: configadmin123
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/NandaniRastogi/banking-config-repo.git
+          default-label: main
+          clone-on-start: true
+          timeout: 10
+          skip-ssl-validation: true
+          force-pull: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics"
